@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>起始页</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1" />
+    <link
+      href="css/style.css"
+      rel="stylesheet" />
+  </head>
+  <body onload="start()">
+    <div class="root">
+      <!-- 时间 -->
+      <div
+        class="time"
+        id="time"></div>
+      <!-- 搜索 -->
+      <div class="search"></div>
+      <!-- 添加快捷跳转 -->
+      <div class="quick-navigation"></div>
+    </div>
+    <script>
+      const time = document.getElementById('time')
+      function displayTime() {
+        let now_time = new Date().toLocaleTimeString()
+        time.innerText = now_time
+      }
+      function start() {
+        window.setInterval('displayTime()', 1000)
+      }
+    </script>
+  </body>
+</html>

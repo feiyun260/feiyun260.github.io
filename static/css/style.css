@@ -1,0 +1,66 @@
+@import url(./reset.css);
+
+/* html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+} */
+* {
+  border: 1px solid #000;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.flex-auto {
+  flex: auto;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+.justify-end {
+  justify-content: end;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.align-center {
+  align-items: center;
+}
+
+.m8 {
+  margin: 8px;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.z1 {
+  z-index: 1;
+}
+
+.w100 {
+  width: 100%;
+}
+.h100 {
+  height: 100%;
+}
+.max-w1200 {
+  max-width: 1200px;
+}
+
+.min-w885 {
+  min-width: 885px;
+}

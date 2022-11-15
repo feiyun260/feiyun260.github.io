@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #eee;
+}
+
+/* 根元素 */
+.root {
+  height: 100%;
+}
+
+/* * {
+  border: 1px solid black;
+} */
+
+/* 白色 */
+.baiSe {
+  background-color: #fff;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.column {
+  flex-direction: column;
+}
+
+/* 周围边距8px */
+.mg8 {
+  margin: 8px;
+}
+
+/* 右边距8px */
+.mgr8 {
+  margin-right: 8px;
+  z-index: 2;
+}
+
+/* 上边距8PX */
+.mgt8 {
+  margin-top: 8px;
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+
+/* 菜单栏 */
+.menu_bar {
+  width: 200px;
+  background-color: #faebd7;
+}
+
+.avatar {
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #fff;
+}
+
+.avatar img {
+  width: 40px;
+  height: 40px;
+}
+
+.name {
+  margin-left: 10px;
+}
+
+/* 导航条 */
+.navigation_bar {
+  padding: 10px 20px;
+  border-bottom: 1px solid rgb(253, 218, 228);
+  font-size: 16px;
+  color: rgb(89, 109, 48);
+}
+
+/* 头部 */
+.head {
+  height: 60px;
+  z-index: 1;
+}
+
+/* 内容栏 */
+.content {
+  overflow: auto;
+}
+
+/* 左区 */
+.left_region {
+  flex: 3
+}
+
+/* 右区 */
+.right_region {}
+
+/* 数据区 */
+.data_area {}
+
+/* 数据块 */
+.data_block {
+  height: 100px;
+  background-color: aquamarine;
+}
+
+/* 列表区 */
+.list_area {}
+
+/* 列表项 */
+.list_items {
+  height: 160px;
+  background-color: aqua;
+}
+
+/* 提示区 */
+.prompt_area {
+  height: 150px;
+  background-color: antiquewhite;
+}
+
+/* 消息区 */
+.message_area {
+  height: 150px;
+  background-color: antiquewhite;
+}
+
+@media (max-width:600px) {
+  .menu_bar {
+    display: none;
+  }
+
+  .content,
+  .data_area {
+    flex-direction: column;
+  }
+
+  .data_block {
+    margin: 0 0 8px;
+    /* flex:1时高度为0 auto时元素本身设置的高度*/
+    flex: auto;
+
+  }
+
+  .right_region {
+    margin-left: 8px;
+  }
+
+  /* 隐藏移动端滚动条 */
+  .content::-webkit-scrollbar {
+    display: none;
+  }
+}
