@@ -16,12 +16,25 @@
       <div
         class="time"
         id="time"></div>
-      <!-- 搜索 -->
-      <div class="search"></div>
+      <!-- 搜索部分 -->
+      <div class="search">
+        <!-- 搜索框 -->
+        <div class="se-input-box">
+          <!-- 搜索引擎选择 -->
+          <div class="se-select"></div>
+          <!-- 搜索输入框 -->
+          <div class="se-input"></div>
+          <!-- 搜索按钮 -->
+          <div class="se-select"></div>
+        </div>
+        <!-- 搜索引擎列表 -->
+        <div class="se-list-keyword"></div>
+      </div>
       <!-- 添加快捷跳转 -->
       <div class="quick-navigation"></div>
     </div>
     <script>
+      // 显示时间
       const time = document.getElementById('time')
       function displayTime() {
         let now_time = new Date().toLocaleTimeString()
