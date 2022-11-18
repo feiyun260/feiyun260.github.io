@@ -2,8 +2,8 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 // 显示时间
-
 let time = ref(new Date().toLocaleTimeString())
+// 定时器id
 let timer: number | undefined
 // 获取当前时间
 function getTime() {
@@ -15,6 +15,8 @@ onMounted(() => {
 onUnmounted(() => {
   clearInterval(timer)
 })
+
+// 搜索引擎
 interface search {
   code: string
   name: string
@@ -22,15 +24,23 @@ interface search {
   url: string
 }
 
+// 获取父组件传过来的搜索引擎列表数据
 const { data } = defineProps<{ data: search[] }>()
-console.log(data)
 
-let data_id = ref(0)
+let data_id = ref(0) //搜索引擎列表ID,默认0
+let show_seList = ref(false) //是否显示搜索列表
 const switchSearchEngines = (index: number) => {
   data_id.value = index
+  show_seList.value = !show_seList.value
 }
+// 跳转搜索
+let searchText = ref('') //搜索内容
 const goSearch = () => {
-  window.open(data[data_id.value].url)
+  window.open(data[data_id.value].url + searchText.value)
+}
+
+const showSelect = () => {
+  show_seList.value = !show_seList.value
 }
 </script>
 
@@ -45,7 +55,9 @@ const goSearch = () => {
       <!-- 搜索框 -->
       <view class="se-input-box shadow">
         <!-- 搜索引擎选择 -->
-        <view class="se-select">
+        <view
+          class="se-select"
+          @click="showSelect">
           <img
             :src="data[data_id]?.icon"
             :alt="data[data_id]?.name" />
@@ -67,13 +79,13 @@ const goSearch = () => {
         <!-- 搜索输入框 -->
         <view class="se-input">
           <input
+            type="text"
             id="searchInput"
             :autofocus="true"
             autocomplete="off"
-            class="se-input"
             maxlength="63"
-            placeholder="输入并搜索"
-            type="text" />
+            v-model="searchText"
+            placeholder="输入并搜索" />
         </view>
         <!-- 搜索按钮 -->
         <view
@@ -97,7 +109,10 @@ const goSearch = () => {
         </view>
       </view>
       <!-- 搜索引擎列表 -->
-      <view class="se-list-keyword">
+      <view
+        class="se-list-keyword"
+        :style="show_seList ? 'transform: scaleY(1)' : ''"
+        ref="seList">
         <ul class="se-all flex">
           <li
             class="se-item flex"
@@ -129,10 +144,10 @@ const goSearch = () => {
 }
 
 .time {
-  width: 200px;
+  width: 500px;
   height: 100px;
   line-height: 100px;
-  font-size: 40px;
+  font-size: 80px;
   text-align: center;
   font-weight: bold;
   color: beige;
@@ -157,7 +172,7 @@ const goSearch = () => {
 }
 
 .se-input-box:hover {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: $bg-input-select;
 }
 .quick-navigation {
   width: 800px;
@@ -177,8 +192,11 @@ const goSearch = () => {
 }
 
 .se-input {
+  position: relative;
   flex: 1;
-  input {
+  overflow: hidden;
+
+  #searchInput {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0);
@@ -190,6 +208,27 @@ const goSearch = () => {
     color: #000;
   }
 }
+.se-input::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 2px;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    $bg-input-select,
+    #7bed9f,
+    #ff7f50,
+    #1e90ff,
+    $bg-input
+  );
+  transform: translateX(-100%);
+  transition: 1s;
+}
+.se-input:hover::before {
+  transform: translateX(100%);
+}
 
 .se-list-keyword {
   margin-top: 20px;
@@ -197,6 +236,9 @@ const goSearch = () => {
   flex-wrap: wrap;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 24px;
+  transform: scaleY(0);
+  transition: 0.5s;
+  transform-origin: top;
   .se-all {
     width: 100%;
     padding: 0;

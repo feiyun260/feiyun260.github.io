@@ -2,12 +2,15 @@ html,
 body {
   padding: 0;
   margin: 0;
+  /* 边框不额外占像素 */
+  box-sizing: border-box;
 }
 /* * {
   outline: 1px solid red;
 } */
 body {
   background: url('../img/bg.jpg') no-repeat fixed center;
+  align-items: start;
 }
 .shadow {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
