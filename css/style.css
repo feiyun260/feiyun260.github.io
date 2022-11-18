@@ -82,3 +82,7 @@ body {
   line-height: 20px;
   outline: none;
 }
+.se-list-keyword {
+  display: flex;
+  flex-wrap: wrap;
+}

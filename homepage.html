@@ -75,7 +75,14 @@
           </div>
         </div>
         <!-- 搜索引擎列表 -->
-        <div class="se-list-keyword"></div>
+        <div class="se-list-keyword">
+          <ul class="se-all">
+            <li class="se-item">
+              <span class="se-item-icon"> </span>
+              <p></p>
+            </li>
+          </ul>
+        </div>
       </div>
       <!-- 添加快捷跳转 -->
       <div class="quick-navigation"></div>
@@ -91,21 +98,27 @@
       function start() {
         window.setInterval('displayTime()', 1000)
       }
-
+    </script>
+    <script>
       // 提交搜索
       const inputEl = document.getElementById('searchInput')
       const goSearchEl = document.getElementById('goSearch')
       inputEl.addEventListener('keypress', (event) => {
         if (event.keyCode === 13) goSearch()
       })
+      // 搜索引擎列表
       const searchList = {
         bing: `https://cn.bing.com/search?q=`,
-        baidu: `https://www.baidu.com/s?tn=68018901_2_oem_dg&ie=utf-8&wd=`,
+        baidu: `https://www.baidu.com/s?wd=`,
         douyin: 'https://www.douyin.com/search/',
       }
+      // 去搜索
       function goSearch(search = 'baidu') {
         window.open(searchList[search] + inputEl.value)
       }
+    </script>
+    <script>
+      // 搜索项
     </script>
   </body>
 </html>
